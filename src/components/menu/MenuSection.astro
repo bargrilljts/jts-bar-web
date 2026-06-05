@@ -1,0 +1,35 @@
+---
+import MenuItemCard from "@/components/menu/MenuItemCard.astro";
+import type { MenuItem } from "@/data/menu";
+import type { DrinkItem } from "@/data/drinks";
+
+type Props = {
+  title: string;
+  items: (MenuItem | DrinkItem)[];
+};
+
+const { title, items } = Astro.props;
+---
+
+{items.length > 0 && (
+  <section class="dark-card menu-section">
+    <h2>{title}</h2>
+    {items.map((item) => <MenuItemCard item={item} />)}
+  </section>
+)}
+
+<style>
+  .menu-section {
+    padding: 24px;
+  }
+
+  .menu-section h2 {
+    margin: 0 0 8px;
+    color: var(--neon-blue);
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 2.4rem;
+    line-height: 0.95;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+</style>

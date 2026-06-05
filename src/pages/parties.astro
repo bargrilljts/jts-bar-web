@@ -1,0 +1,76 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import ReservePanel from "@/components/shared/ReservePanel.astro";
+
+const partyTypes = ["Birthdays", "Team Nights", "Staff Parties", "Watch Parties", "Fundraisers", "Private Events"];
+---
+
+<SiteLayout title="Parties" description="Birthdays, team nights, watch parties, and group bookings at JT's.">
+  <main>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Parties</p>
+          <h1 class="display">Bring<br /><span class="neon">the crew.</span></h1>
+          <p class="lead">Birthdays, team nights, staff parties, watch parties, or just a good excuse to take over a few tables.</p>
+          <div class="btn-row" style="margin-top: 28px">
+            <a class="button primary" href="#party-placeholder">Tell Us the Plan</a>
+            <a class="button paper" href="/reserve">Save a Table</a>
+          </div>
+        </div>
+        <div class="paper-card party-note">
+          <p class="eyebrow">Good for</p>
+          {partyTypes.map((type) => <span>{type}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact" id="party-placeholder">
+      <div class="container dark-card inquiry">
+        <p class="eyebrow">Party inquiry</p>
+        <h2 class="title">Tell us the plan.</h2>
+        <p>The real form can go here. For now, call or email and we'll point you the right way.</p>
+        <div class="btn-row">
+          <a class="button primary" href="mailto:jtsbargrill@yahoo.ca">Email JT's</a>
+          <a class="button paper" href="tel:7804635560">Call the Bar</a>
+        </div>
+      </div>
+    </section>
+
+    <ReservePanel />
+  </main>
+</SiteLayout>
+
+<style>
+  .party-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-content: start;
+    padding: 30px;
+  }
+
+  .party-note .eyebrow {
+    width: 100%;
+    color: var(--red);
+    text-shadow: none;
+  }
+
+  .party-note span {
+    border: 2px solid #24160d;
+    border-radius: 999px;
+    padding: 10px 12px;
+    color: #24160d;
+    font-weight: 900;
+  }
+
+  .inquiry {
+    padding: 34px;
+  }
+
+  .inquiry p:not(.eyebrow) {
+    color: #e4ded6;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+</style>

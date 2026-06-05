@@ -1,0 +1,94 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+---
+
+<SiteLayout title="Apply to Play" description="Send JT's your act, links, dates, and setup needs.">
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Apply</p>
+        <h1 class="display">Send us<br /><span class="neon">your stuff.</span></h1>
+        <p class="lead">Links, dates, gear needs, and what kind of night you bring.</p>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container">
+        <form class="paper-card apply-form" action="#" method="post">
+          <label>Act name<input name="actName" /></label>
+          <label>Your name<input name="contactName" /></label>
+          <label>Email<input name="email" type="email" /></label>
+          <label>Phone<input name="phone" /></label>
+          <label>What do you do?<input name="actType" placeholder="Band, DJ, host, comic..." /></label>
+          <label>Genre / vibe<input name="genre" /></label>
+          <label>Instagram<input name="instagram" /></label>
+          <label>Website<input name="website" /></label>
+          <label class="full">Video links<textarea name="videoLinks"></textarea></label>
+          <label class="full">Sample links<textarea name="sampleLinks"></textarea></label>
+          <label>Expected draw<input name="expectedDraw" /></label>
+          <label>Preferred dates<input name="preferredDates" /></label>
+          <label>Fee expectation<input name="feeExpectation" /></label>
+          <label>Got a poster?<input name="poster" /></label>
+          <label class="full">Gear / setup needs<textarea name="techNeeds"></textarea></label>
+          <label class="full">Anything else?<textarea name="notes"></textarea></label>
+          <button class="button primary" type="submit">Send It In</button>
+          <p>Form backend is not connected yet. This is the V1 front-end shell.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .apply-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 30px;
+  }
+
+  .apply-form label {
+    display: grid;
+    gap: 8px;
+    color: #24160d;
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .apply-form input,
+  .apply-form textarea {
+    width: 100%;
+    border: 2px solid #24160d;
+    border-radius: 8px;
+    padding: 13px;
+    background: #fff8ea;
+    color: #1b1209;
+    font: inherit;
+    text-transform: none;
+  }
+
+  .apply-form textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  .full,
+  .apply-form button,
+  .apply-form p {
+    grid-column: 1 / -1;
+  }
+
+  .apply-form p {
+    margin: 0;
+    color: #3d2b1b;
+    font-weight: 800;
+    text-transform: none;
+  }
+
+  @media (max-width: 760px) {
+    .apply-form {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

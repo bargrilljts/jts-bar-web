@@ -1,0 +1,62 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+
+const who = ["Bands", "Solo artists", "DJs", "Hosts", "Comics", "Jam-night folks", "Community organizers"];
+---
+
+<SiteLayout title="Play at JT's" description="Bands, DJs, hosts, comics, and local acts can apply to play the room at JT's.">
+  <main>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Play at JT's</p>
+          <h1 class="display">Want to<br /><span class="neon">play the room?</span></h1>
+          <p class="lead">Bands, DJs, hosts, comics, jam-night folks. Send us what you do. If it fits, we'll talk dates.</p>
+          <div class="btn-row" style="margin-top: 28px">
+            <a class="button primary" href="/play-at-jts/apply">Send Your Stuff</a>
+            <a class="button paper" href="/events">See the Board</a>
+          </div>
+        </div>
+        <div class="dark-card who-card">
+          <p class="eyebrow">Who fits</p>
+          {who.map((item) => <span>{item}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container">
+        <div class="chalk-board">
+          <p class="eyebrow">How it works</p>
+          <h2 class="title">Nothing weird.</h2>
+          <div class="board-line"><b>Send your stuff</b><span>Links help</span></div>
+          <div class="board-line"><b>We take a look</b><span>No essays</span></div>
+          <div class="board-line"><b>We talk dates</b><span>If it fits</span></div>
+          <div class="board-line"><b>The night goes up</b><span>On the board</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .who-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-content: start;
+    padding: 30px;
+  }
+
+  .who-card .eyebrow {
+    width: 100%;
+  }
+
+  .who-card span {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.28);
+    font-weight: 900;
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import SectionHeader from "@/components/shared/SectionHeader.astro";
+import EventCard from "@/components/events/EventCard.astro";
+import ReservePanel from "@/components/shared/ReservePanel.astro";
+import { featuredEvents, publishedEvents } from "@/data/events";
+
+const featured = featuredEvents[0] ?? publishedEvents[0];
+---
+
+<SiteLayout title="Events" description="Karaoke, meat draws, DJs, bands, game nights, and more at JT's.">
+  <main>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Events</p>
+          <h1 class="display">Stuff<br /><span class="neon">happening</span><br />at JT's.</h1>
+          <p class="lead">Karaoke, meat draws, DJs, bands, game nights, and whatever turns a regular night into a late one.</p>
+          <div class="btn-row" style="margin-top: 28px">
+            <a class="button primary" href="#upcoming">Upcoming Nights</a>
+            <a class="button paper" href="/reserve">Save a Table</a>
+          </div>
+        </div>
+        {featured && <EventCard event={featured} />}
+      </div>
+    </section>
+
+    <section class="section compact" id="upcoming">
+      <div class="container">
+        <SectionHeader eyebrow="Upcoming" title="Pick a night." text="Filters come later. For now, the board is short enough." />
+        <div class="filter-row" aria-label="Event filters">
+          <span>All</span><span>Karaoke</span><span>Live Music</span><span>DJ</span><span>Open Jam</span><span>Sports</span><span>Community</span>
+        </div>
+        <div class="card-grid">
+          {publishedEvents.map((event) => <EventCard event={event} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container split">
+        <div class="chalk-board">
+          <p class="eyebrow">Regular nights</p>
+          <h2 class="title">Some things come back.</h2>
+          <div class="board-line"><b>Karaoke</b><span>Midweek</span></div>
+          <div class="board-line"><b>DJ nights</b><span>Weekends</span></div>
+          <div class="board-line"><b>Meat draw</b><span>Monthly</span></div>
+          <div class="board-line"><b>Open jam</b><span>Now booking</span></div>
+        </div>
+        <div class="dark-card event-cta">
+          <p class="eyebrow">Got a night?</p>
+          <h2 class="title">Play the room.</h2>
+          <p>If you bring music, jokes, games, or a crowd, send it in.</p>
+          <a class="button paper" href="/play-at-jts/apply">Send Your Stuff</a>
+        </div>
+      </div>
+    </section>
+
+    <ReservePanel />
+  </main>
+</SiteLayout>
+
+<style>
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 22px;
+  }
+
+  .filter-row span {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 12px;
+    background: rgba(0, 0, 0, 0.32);
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .event-cta {
+    padding: 34px;
+  }
+
+  .event-cta p:not(.eyebrow) {
+    color: #e5edf5;
+    font-size: 1.1rem;
+    font-weight: 800;
+  }
+</style>

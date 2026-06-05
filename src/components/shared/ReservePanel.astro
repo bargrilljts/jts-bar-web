@@ -1,0 +1,70 @@
+---
+import { site } from "@/data/site";
+---
+
+<section class="section compact" id="booking-placeholder">
+  <div class="container">
+    <div class="paper-card reserve-panel">
+      <div>
+        <p class="eyebrow">Save a table</p>
+        <h2 class="card-title">Coming with a crew?</h2>
+        <p>Grab a table before the room fills up. Cal.com goes here when it is ready.</p>
+      </div>
+      <div class="reserve-fields" aria-hidden="true">
+        <span>Party size</span>
+        <span>Date</span>
+        <span>Time</span>
+        <span>Phone</span>
+      </div>
+      <a class="button primary" href={site.reserveUrl}>Save My Table</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reserve-panel {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr auto;
+    gap: 22px;
+    align-items: center;
+    padding: 28px;
+  }
+
+  .reserve-panel p {
+    margin: 0;
+    color: #3d2b1b;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
+  .reserve-panel .eyebrow {
+    color: var(--red);
+    text-shadow: none;
+  }
+
+  .reserve-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .reserve-fields span {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    border: 2px solid #24160d;
+    border-radius: 8px;
+    padding: 12px;
+    background: #fff8ea;
+    color: #594331;
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 850px) {
+    .reserve-panel {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

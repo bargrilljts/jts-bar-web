@@ -1,0 +1,58 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import MenuSection from "@/components/menu/MenuSection.astro";
+import ReservePanel from "@/components/shared/ReservePanel.astro";
+import { drinkCategories, drinkItems } from "@/data/drinks";
+
+const featured = drinkItems.filter((item) => item.featured);
+---
+
+<SiteLayout title="Drinks" description="Cold beer, cocktails, ciders, seltzers, shots, and daily drink specials at JT's.">
+  <main>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Drinks</p>
+          <h1 class="display">Cold ones,<br /><span class="neon">mixed ones,</span><br />usual suspects.</h1>
+          <p class="lead">Ask what's on special when you get here.</p>
+          <div class="btn-row" style="margin-top: 28px">
+            <a class="button primary" href="/events">See What's On</a>
+            <a class="button paper" href="/reserve">Save a Table</a>
+          </div>
+        </div>
+        <div class="chalk-board">
+          <p class="eyebrow">Feature drinks</p>
+          {featured.map((item) => (
+            <div class="board-line"><b>{item.name}</b><span>{item.price ?? "Ask"}</span></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container menu-grid">
+        {
+          drinkCategories.map((category) => (
+            <MenuSection title={category.label} items={drinkItems.filter((item) => item.category === category.key && item.available)} />
+          ))
+        }
+      </div>
+    </section>
+
+    <ReservePanel />
+  </main>
+</SiteLayout>
+
+<style>
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 800px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

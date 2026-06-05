@@ -1,0 +1,189 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import HeroPosterWall from "@/components/home/HeroPosterWall.astro";
+import SectionHeader from "@/components/shared/SectionHeader.astro";
+import EventCard from "@/components/events/EventCard.astro";
+import MenuItemCard from "@/components/menu/MenuItemCard.astro";
+import ReservePanel from "@/components/shared/ReservePanel.astro";
+import { featuredEvents, publishedEvents } from "@/data/events";
+import { menuItems } from "@/data/menu";
+
+const menuHits = menuItems.filter((item) => item.featured).slice(0, 4);
+const events = featuredEvents.length ? featuredEvents : publishedEvents.slice(0, 3);
+---
+
+<SiteLayout>
+  <main>
+    <HeroPosterWall />
+
+    <section class="section">
+      <div class="container">
+        <SectionHeader
+          eyebrow="Pick your night"
+          title="Food. Events. A few tables pushed together."
+          text="Three easy ways into the room. Start where you want."
+        />
+        <div class="card-grid">
+          <a class="poster-card quick-card" href="/food-menu">
+            <h3>Menu</h3>
+            <p>Wings, burgers, nachos, pizza, and the usual good decisions.</p>
+            <span>View Menu</span>
+          </a>
+          <a class="poster-card quick-card blue" href="/events">
+            <h3>Events</h3>
+            <p>Karaoke, meat draws, DJs, bands, and game nights.</p>
+            <span>See What's On</span>
+          </a>
+          <a class="poster-card quick-card amber" href="/parties">
+            <h3>Parties</h3>
+            <p>Birthdays, team nights, watch parties, and a few tables.</p>
+            <span>Bring the Crew</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container">
+        <SectionHeader eyebrow="This week" title="Stuff happening at JT's." text="A regular night can turn into a late one pretty fast." />
+        <div class="card-grid">
+          {events.slice(0, 3).map((event) => <EventCard event={event} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <div class="chalk-board">
+          <p class="eyebrow">Tonight's board</p>
+          <h2 class="title">Ask what's good.</h2>
+          <div class="board-line"><b>Happy Hour</b><span>Ask your server</span></div>
+          <div class="board-line"><b>Wings + Pints</b><span>Game night</span></div>
+          <div class="board-line"><b>Karaoke</b><span>Bring the crew</span></div>
+          <div class="board-line"><b>Live Bands</b><span>Now booking</span></div>
+          <div class="board-line"><b>Pool / Darts</b><span>Stay awhile</span></div>
+        </div>
+        <div class="dark-card play-panel">
+          <p class="eyebrow">Play at JT's</p>
+          <h2 class="title">Want to play the room?</h2>
+          <p>Bands, DJs, hosts, comics, jam-night folks. Send us what you do. If it fits, we'll talk dates.</p>
+          <a class="button paper" href="/play-at-jts/apply">Send Your Stuff</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container split">
+        <div class="dark-card menu-hits">
+          <p class="eyebrow">Menu hits</p>
+          <h2 class="title">Pub food. No mystery.</h2>
+          {menuHits.map((item) => <MenuItemCard item={item} />)}
+          <div class="btn-row">
+            <a class="button primary" href="/food-menu">View Full Menu</a>
+            <a class="button" href="/reserve">Save a Table</a>
+          </div>
+        </div>
+        <div class="paper-card feature-dish">
+          <p class="eyebrow">Feature dish</p>
+          <h2>Hot Turkey Roulade Sandwich</h2>
+          <p>Turkey, gravy, bread, and a side. The kind of plate that does not need a speech.</p>
+        </div>
+      </div>
+    </section>
+
+    <ReservePanel />
+  </main>
+</SiteLayout>
+
+<style>
+  .quick-card {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .quick-card h3 {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 92px;
+    margin: 0;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 3.2rem;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .quick-card p {
+    position: absolute;
+    left: 22px;
+    right: 22px;
+    bottom: 42px;
+    margin: 0;
+    color: #e4ded6;
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .quick-card span {
+    position: absolute;
+    left: 22px;
+    bottom: 18px;
+    color: var(--neon-blue);
+    font-family: "Arial Black", Impact, sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+  }
+
+  .quick-card.blue {
+    background:
+      linear-gradient(180deg, rgba(0, 168, 255, 0.08), rgba(0, 0, 0, 0.88)),
+      radial-gradient(circle at 55% 12%, rgba(0, 168, 255, 0.5), transparent 36%),
+      #101010;
+  }
+
+  .quick-card.amber {
+    background:
+      linear-gradient(180deg, rgba(255, 180, 67, 0.08), rgba(0, 0, 0, 0.88)),
+      radial-gradient(circle at 55% 12%, rgba(255, 180, 67, 0.46), transparent 36%),
+      #101010;
+  }
+
+  .play-panel,
+  .menu-hits {
+    padding: 34px;
+  }
+
+  .play-panel p:not(.eyebrow) {
+    max-width: 520px;
+    color: #e5edf5;
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1.5;
+  }
+
+  .feature-dish {
+    padding: 34px;
+    transform: rotate(1deg);
+  }
+
+  .feature-dish .eyebrow {
+    color: var(--red);
+    text-shadow: none;
+  }
+
+  .feature-dish h2 {
+    margin: 0 0 16px;
+    color: #111;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: clamp(2.6rem, 5vw, 4.8rem);
+    line-height: 0.88;
+    text-transform: uppercase;
+  }
+
+  .feature-dish p {
+    color: #3d2b1b;
+    font-size: 1.1rem;
+    font-weight: 900;
+    line-height: 1.45;
+  }
+</style>

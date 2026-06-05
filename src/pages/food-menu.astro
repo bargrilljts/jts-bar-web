@@ -1,0 +1,94 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import MenuSection from "@/components/menu/MenuSection.astro";
+import ReservePanel from "@/components/shared/ReservePanel.astro";
+import { menuCategories, menuItems } from "@/data/menu";
+
+const featured = menuItems.filter((item) => item.featured);
+---
+
+<SiteLayout title="Food Menu" description="Wings, burgers, nachos, pizza, late-night bites, and pub food at JT's.">
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Food menu</p>
+        <h1 class="display">Pub food.<br /><span class="neon">No mystery.</span></h1>
+        <p class="lead">Wings, burgers, nachos, pizza, late-night bites, and the stuff people order without looking anymore.</p>
+        <div class="btn-row" style="margin-top: 28px">
+          <a class="button primary" href="/reserve">Save a Table</a>
+          <a class="button paper" href="/events">See What's On</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container">
+        <div class="paper-card feature-strip">
+          <p class="eyebrow">Featured</p>
+          <h2>Good calls.</h2>
+          <div class="feature-list">
+            {featured.slice(0, 4).map((item) => <span>{item.name}</span>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container menu-grid">
+        {
+          menuCategories.map((category) => (
+            <MenuSection title={category.label} items={menuItems.filter((item) => item.category === category.key && item.available)} />
+          ))
+        }
+      </div>
+    </section>
+
+    <ReservePanel />
+  </main>
+</SiteLayout>
+
+<style>
+  .feature-strip {
+    padding: 28px;
+  }
+
+  .feature-strip .eyebrow {
+    color: var(--red);
+    text-shadow: none;
+  }
+
+  .feature-strip h2 {
+    margin: 0 0 18px;
+    color: #111;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 4rem;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .feature-list span {
+    border: 2px solid #24160d;
+    border-radius: 999px;
+    padding: 10px 12px;
+    color: #24160d;
+    font-weight: 900;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  @media (max-width: 800px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

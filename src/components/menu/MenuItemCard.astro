@@ -1,0 +1,63 @@
+---
+import type { MenuItem } from "@/data/menu";
+import type { DrinkItem } from "@/data/drinks";
+
+type Props = {
+  item: MenuItem | DrinkItem;
+};
+
+const { item } = Astro.props;
+---
+
+<article class="menu-item-card">
+  <div>
+    <h3>{item.name}</h3>
+    {item.description && <p>{item.description}</p>}
+    {"tags" in item && item.tags && item.tags.length > 0 && (
+      <div class="tags">{item.tags.map((tag) => <span>{tag}</span>)}</div>
+    )}
+  </div>
+  {item.price && <strong>{item.price}</strong>}
+</article>
+
+<style>
+  .menu-item-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  }
+
+  .menu-item-card h3 {
+    margin: 0 0 6px;
+    font-size: 1.08rem;
+    line-height: 1.1;
+  }
+
+  .menu-item-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.42;
+  }
+
+  .menu-item-card strong {
+    color: #ffd27d;
+    white-space: nowrap;
+  }
+
+  .tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .tags span {
+    color: var(--neon-blue);
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+</style>

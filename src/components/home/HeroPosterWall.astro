@@ -1,0 +1,222 @@
+---
+import { site } from "@/data/site";
+import { featuredEvents } from "@/data/events";
+
+const mainEvent = featuredEvents[0];
+---
+
+<section class="home-hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="badge-row">
+        <span>Cold Beer</span>
+        <span>Live Music</span>
+        <span>Daily Specials</span>
+        <span>{site.announcement}</span>
+      </div>
+      <p class="eyebrow">{site.name}</p>
+      <h1 class="display">Sip.<br /><span class="neon">Savor.</span><br />Stay for<br />the show.</h1>
+      <p class="lead">{site.description}</p>
+      <div class="btn-row hero-actions">
+        <a class="button primary" href="/events">See What's On</a>
+        <a class="button paper" href="/reserve">Save a Table</a>
+        <a class="button" href="/play-at-jts">Play at JT's</a>
+      </div>
+    </div>
+
+    <div class="poster-wall" aria-label="JT's event poster wall">
+      <article class="paper-card main-poster">
+        <p class="poster-kicker">This week at JT's</p>
+        <h2>{mainEvent?.title ?? "Pub nights"}</h2>
+        <div class="datebox">{mainEvent?.dayLabel ?? "Tonight"}</div>
+        <p>{mainEvent?.shortDescription ?? "Something is probably happening. Check the board."}</p>
+        <a class="button primary" href={mainEvent ? `/events/${mainEvent.slug}` : "/events"}>More Info</a>
+      </article>
+      <div class="mini-poster">Now<br />Booking<br /><span>Local Acts</span></div>
+      <div class="coaster">Karaoke<br /><span>DJ</span><br />Open Jam</div>
+      <div class="ticket-stub">Monthly Meat Draw</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-hero {
+    position: relative;
+    padding: 76px 0 54px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+    gap: 46px;
+    align-items: center;
+  }
+
+  .badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .badge-row span {
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    padding: 9px 12px;
+    background: rgba(0, 0, 0, 0.36);
+    color: #e7dfd5;
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .hero-actions {
+    margin-top: 30px;
+  }
+
+  .poster-wall {
+    position: relative;
+    min-height: 560px;
+  }
+
+  .main-poster {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    width: min(430px, 100%);
+    padding: 28px;
+    transform: rotate(2deg);
+  }
+
+  .poster-kicker {
+    margin: 0 0 12px;
+    color: var(--red);
+    font-weight: 900;
+    letter-spacing: 0.16em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .main-poster h2 {
+    margin: 0;
+    color: #111;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 4.2rem;
+    line-height: 0.86;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .main-poster p {
+    color: #302115;
+    font-weight: 900;
+    line-height: 1.45;
+  }
+
+  .datebox {
+    margin: 22px 0;
+    border: 4px solid #111;
+    padding: 12px;
+    color: #111;
+    font-family: "Arial Black", Impact, sans-serif;
+    font-size: 1.45rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .mini-poster {
+    position: absolute;
+    left: 8px;
+    bottom: 56px;
+    width: 230px;
+    padding: 20px;
+    border: 3px solid var(--neon-blue);
+    border-radius: 8px;
+    background: linear-gradient(180deg, #061421, #020508);
+    box-shadow: var(--shadow);
+    color: #fff;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 2.3rem;
+    line-height: 0.9;
+    text-transform: uppercase;
+    transform: rotate(-7deg);
+  }
+
+  .mini-poster span {
+    color: var(--neon-blue);
+  }
+
+  .coaster {
+    position: absolute;
+    right: 316px;
+    bottom: 8px;
+    width: 150px;
+    height: 150px;
+    display: grid;
+    place-items: center;
+    border: 4px solid #111;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f5d69c 0 58%, #17110a 59% 61%, #f5d69c 62% 100%);
+    color: #1b1209;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 1.16rem;
+    line-height: 0.92;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(14deg);
+  }
+
+  .coaster span {
+    color: var(--deep-blue);
+    font-size: 2rem;
+  }
+
+  .ticket-stub {
+    position: absolute;
+    top: 58px;
+    left: 30px;
+    padding: 16px 18px;
+    border: 2px dashed rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    background: var(--amber);
+    box-shadow: var(--shadow);
+    color: #17110a;
+    font-family: "Arial Black", Impact, sans-serif;
+    text-transform: uppercase;
+    transform: rotate(-10deg);
+  }
+
+  @media (max-width: 940px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .poster-wall {
+      min-height: 520px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .home-hero {
+      padding-top: 44px;
+    }
+
+    .main-poster {
+      left: 0;
+      right: auto;
+      width: 100%;
+    }
+
+    .main-poster h2 {
+      font-size: 3.2rem;
+    }
+
+    .mini-poster,
+    .ticket-stub,
+    .coaster {
+      display: none;
+    }
+  }
+</style>

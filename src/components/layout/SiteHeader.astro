@@ -1,0 +1,31 @@
+---
+import { site } from "@/data/site";
+
+const nav = [
+  { href: "/events", label: "Events" },
+  { href: "/food-menu", label: "Menu" },
+  { href: "/drinks", label: "Drinks" },
+  { href: "/parties", label: "Parties" },
+  { href: "/play-at-jts", label: "Play at JT's" },
+  { href: "/contact", label: "Contact" }
+];
+---
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a class="brand" href="/" aria-label={`${site.name} home`}>
+      <span class="brand-mark">JT's</span>
+      <span>
+        <span class="brand-name">{site.name}</span>
+        <span class="brand-kicker">{site.tagline}</span>
+      </span>
+    </a>
+
+    <button class="button nav-toggle" type="button" aria-label="Open menu">Menu</button>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a class="button primary" href="/reserve">Save a Table</a>
+    </nav>
+  </div>
+</header>

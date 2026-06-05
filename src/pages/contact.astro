@@ -1,0 +1,49 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { site } from "@/data/site";
+---
+
+<SiteLayout title="Contact" description="Find JT's Bar & Grill in Mill Woods, Edmonton.">
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1 class="display">Find us<br /><span class="neon">in Mill Woods.</span></h1>
+        <p class="lead">Drop by, call ahead, or send a note if you're planning something.</p>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container split">
+        <div class="dark-card contact-card">
+          <p class="eyebrow">JT's Bar & Grill</p>
+          <h2 class="title">Come by.</h2>
+          <p>{site.address}</p>
+          <p><a href={`tel:${site.phone.replaceAll("-", "")}`}>{site.phone}</a></p>
+          <p><a href={`mailto:${site.email}`}>{site.email}</a></p>
+          <div class="btn-row">
+            <a class="button primary" href="/reserve">Save a Table</a>
+            <a class="button paper" href={site.instagram}>Instagram</a>
+          </div>
+        </div>
+        <div class="chalk-board">
+          <p class="eyebrow">Hours</p>
+          {site.hours.map((row) => <div class="board-line"><b>{row.day}</b><span>{row.time}</span></div>)}
+        </div>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .contact-card {
+    padding: 34px;
+  }
+
+  .contact-card p:not(.eyebrow) {
+    color: #e4ded6;
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.5;
+  }
+</style>

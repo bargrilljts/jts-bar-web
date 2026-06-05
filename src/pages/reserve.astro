@@ -1,0 +1,57 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import ReservePanel from "@/components/shared/ReservePanel.astro";
+---
+
+<SiteLayout title="Reserve" description="Save a table at JT's Bar & Grill in Mill Woods.">
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Reserve</p>
+        <h1 class="display">Coming with<br /><span class="neon">a crew?</span></h1>
+        <p class="lead">Grab a table before the room fills up.</p>
+      </div>
+    </section>
+
+    <section class="section compact">
+      <div class="container card-grid booking-types">
+        <article class="poster-card"><h2>Regular Table</h2><p>Dinner, drinks, couple people, easy night.</p></article>
+        <article class="poster-card"><h2>Event Night</h2><p>Coming for karaoke, a band, a draw, or a game.</p></article>
+        <article class="poster-card"><h2>Birthday Crew</h2><p>A few tables, a little noise, no big speech.</p></article>
+      </div>
+    </section>
+
+    <ReservePanel />
+
+    <section class="section compact">
+      <div class="container dark-card fallback">
+        <p class="eyebrow">No booking link yet</p>
+        <h2 class="title">Call the bar.</h2>
+        <p>Until Cal.com is wired up, this page keeps the spot warm.</p>
+        <a class="button primary" href="tel:7804635560">780-463-5560</a>
+      </div>
+    </section>
+  </main>
+</SiteLayout>
+
+<style>
+  .booking-types article,
+  .fallback {
+    padding: 28px;
+  }
+
+  .booking-types h2 {
+    margin: 0 0 12px;
+    font-family: Impact, "Arial Black", sans-serif;
+    font-size: 3rem;
+    line-height: 0.9;
+    text-transform: uppercase;
+  }
+
+  .booking-types p,
+  .fallback p {
+    color: #e4ded6;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+</style>

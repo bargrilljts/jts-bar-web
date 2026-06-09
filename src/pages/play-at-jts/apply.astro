@@ -1,5 +1,8 @@
 ---
 import SiteLayout from "@/layouts/SiteLayout.astro";
+import { bookingLinks } from "@/data/booking";
+
+const isEmailFallback = bookingLinks.artistApplication.startsWith("mailto:");
 ---
 
 <SiteLayout title="Apply to Play" description="Send JT's your act, links, dates, and setup needs.">
@@ -14,7 +17,12 @@ import SiteLayout from "@/layouts/SiteLayout.astro";
 
     <section class="section compact">
       <div class="container">
-        <form class="paper-card apply-form" action="#" method="post">
+        <form
+          class="paper-card apply-form"
+          action={bookingLinks.artistApplication}
+          method="post"
+          enctype={isEmailFallback ? "text/plain" : "application/x-www-form-urlencoded"}
+        >
           <label>Act name<input name="actName" /></label>
           <label>Your name<input name="contactName" /></label>
           <label>Email<input name="email" type="email" /></label>
@@ -32,7 +40,7 @@ import SiteLayout from "@/layouts/SiteLayout.astro";
           <label class="full">Gear / setup needs<textarea name="techNeeds"></textarea></label>
           <label class="full">Anything else?<textarea name="notes"></textarea></label>
           <button class="button primary" type="submit">Send It In</button>
-          <p>Form backend is not connected yet. This is the V1 front-end shell.</p>
+          <p>{isEmailFallback ? "This opens an email for now. A proper form link can be plugged in when ready." : "This sends to the application form configured for the site."}</p>
         </form>
       </div>
     </section>

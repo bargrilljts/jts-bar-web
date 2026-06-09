@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import ReservePanel from "@/components/shared/ReservePanel.astro";
+import { bookingLinks } from "@/data/booking";
 
 const partyTypes = ["Birthdays", "Team Nights", "Staff Parties", "Watch Parties", "Fundraisers", "Private Events"];
 ---
@@ -14,7 +15,7 @@ const partyTypes = ["Birthdays", "Team Nights", "Staff Parties", "Watch Parties"
           <h1 class="display">Bring<br /><span class="neon">the crew.</span></h1>
           <p class="lead">Birthdays, team nights, staff parties, watch parties, or just a good excuse to take over a few tables.</p>
           <div class="btn-row" style="margin-top: 28px">
-            <a class="button primary" href="#party-placeholder">Tell Us the Plan</a>
+            <a class="button primary" href={bookingLinks.partyInquiry}>Tell Us the Plan</a>
             <a class="button paper" href="/reserve">Save a Table</a>
           </div>
         </div>
@@ -29,9 +30,9 @@ const partyTypes = ["Birthdays", "Team Nights", "Staff Parties", "Watch Parties"
       <div class="container dark-card inquiry">
         <p class="eyebrow">Party inquiry</p>
         <h2 class="title">Tell us the plan.</h2>
-        <p>The real form can go here. For now, call or email and we'll point you the right way.</p>
+        <p>The form link can go here. For now, call or email and we'll point you the right way.</p>
         <div class="btn-row">
-          <a class="button primary" href="mailto:jtsbargrill@yahoo.ca">Email JT's</a>
+          <a class="button primary" href={bookingLinks.partyInquiry}>Email JT's</a>
           <a class="button paper" href="tel:7804635560">Call the Bar</a>
         </div>
       </div>

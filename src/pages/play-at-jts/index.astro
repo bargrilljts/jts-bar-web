@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "@/layouts/SiteLayout.astro";
+import { bookingLinks } from "@/data/booking";
 
 const who = ["Bands", "Solo artists", "DJs", "Hosts", "Comics", "Jam-night folks", "Community organizers"];
 ---
@@ -13,7 +14,7 @@ const who = ["Bands", "Solo artists", "DJs", "Hosts", "Comics", "Jam-night folks
           <h1 class="display">Want to<br /><span class="neon">play the room?</span></h1>
           <p class="lead">Bands, DJs, hosts, comics, jam-night folks. Send us what you do. If it fits, we'll talk dates.</p>
           <div class="btn-row" style="margin-top: 28px">
-            <a class="button primary" href="/play-at-jts/apply">Send Your Stuff</a>
+            <a class="button primary" href={bookingLinks.artistApplication}>Send Your Stuff</a>
             <a class="button paper" href="/events">See the Board</a>
           </div>
         </div>

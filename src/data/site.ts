@@ -10,9 +10,6 @@ export const site = {
   instagram: "https://www.instagram.com/jtsbaryeg/",
   facebook: "#",
   tiktok: "#",
-  reserveUrl: "#booking-placeholder",
-  partyUrl: "#party-placeholder",
-  performerUrl: "/play-at-jts/apply",
   announcement: "Best Dive Bar since 2021.",
   hours: [
     { day: "Mon - Thu", time: "Ask us what's on tonight" },

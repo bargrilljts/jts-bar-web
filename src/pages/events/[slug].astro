@@ -2,6 +2,7 @@
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import EventCard from "@/components/events/EventCard.astro";
 import ReservePanel from "@/components/shared/ReservePanel.astro";
+import { bookingLinks } from "@/data/booking";
 import { publishedEvents } from "@/data/events";
 
 export function getStaticPaths() {
@@ -38,7 +39,7 @@ const related = publishedEvents.filter((item) => item.slug !== event.slug).slice
             {event.rsvpUrl && <a class="button primary" href={event.rsvpUrl}>RSVP</a>}
             {event.ticketUrl && <a class="button primary" href={event.ticketUrl}>Buy Tickets</a>}
             {!event.rsvpUrl && !event.ticketUrl && <span class="no-ticket">No tickets needed. Just show up early.</span>}
-            <a class="button paper" href="/reserve">Save a Table for This Night</a>
+            <a class="button paper" href={event.reservationUrl ?? bookingLinks.eventNight}>Save a Table for This Night</a>
           </div>
         </div>
       </div>

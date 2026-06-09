@@ -1,5 +1,5 @@
 ---
-import { site } from "@/data/site";
+import { bookingLinks } from "@/data/booking";
 ---
 
 <section class="section compact" id="booking-placeholder">
@@ -16,7 +16,7 @@ import { site } from "@/data/site";
         <span>Time</span>
         <span>Phone</span>
       </div>
-      <a class="button primary" href={site.reserveUrl}>Save My Table</a>
+      <a class="button primary" href={bookingLinks.regularTable}>Save My Table</a>
     </div>
   </div>
 </section>

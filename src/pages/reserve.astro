@@ -1,6 +1,7 @@
 ---
 import SiteLayout from "@/layouts/SiteLayout.astro";
 import ReservePanel from "@/components/shared/ReservePanel.astro";
+import { bookingTypes } from "@/data/booking";
 ---
 
 <SiteLayout title="Reserve" description="Save a table at JT's Bar & Grill in Mill Woods.">
@@ -15,9 +16,15 @@ import ReservePanel from "@/components/shared/ReservePanel.astro";
 
     <section class="section compact">
       <div class="container card-grid booking-types">
-        <article class="poster-card"><h2>Regular Table</h2><p>Dinner, drinks, couple people, easy night.</p></article>
-        <article class="poster-card"><h2>Event Night</h2><p>Coming for karaoke, a band, a draw, or a game.</p></article>
-        <article class="poster-card"><h2>Birthday Crew</h2><p>A few tables, a little noise, no big speech.</p></article>
+        {
+          bookingTypes.map((type) => (
+            <a class="poster-card booking-card" href={type.href}>
+              <h2>{type.title}</h2>
+              <p>{type.text}</p>
+              <span>Book This</span>
+            </a>
+          ))
+        }
       </div>
     </section>
 
@@ -27,7 +34,7 @@ import ReservePanel from "@/components/shared/ReservePanel.astro";
       <div class="container dark-card fallback">
         <p class="eyebrow">No booking link yet</p>
         <h2 class="title">Call the bar.</h2>
-        <p>Until Cal.com is wired up, this page keeps the spot warm.</p>
+        <p>Until Cal.com is wired up, booking requests fall back to email or phone.</p>
         <a class="button primary" href="tel:7804635560">780-463-5560</a>
       </div>
     </section>
@@ -35,9 +42,14 @@ import ReservePanel from "@/components/shared/ReservePanel.astro";
 </SiteLayout>
 
 <style>
-  .booking-types article,
+  .booking-card,
   .fallback {
     padding: 28px;
+  }
+
+  .booking-card {
+    color: #fff;
+    text-decoration: none;
   }
 
   .booking-types h2 {
@@ -53,5 +65,14 @@ import ReservePanel from "@/components/shared/ReservePanel.astro";
     color: #e4ded6;
     font-weight: 800;
     line-height: 1.45;
+  }
+
+  .booking-card span {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--neon-blue);
+    font-family: "Arial Black", Impact, sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
   }
 </style>

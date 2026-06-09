@@ -38,7 +38,6 @@ export const events: Event[] = [
       "A low-pressure night for quick chats, cold drinks, and seeing who's around. Come early if you want food first.",
     priceLabel: "Tickets",
     ticketUrl: "#",
-    reservationUrl: "#booking-placeholder",
     featured: true,
     status: "published"
   },
@@ -54,7 +53,6 @@ export const events: Event[] = [
       "Our monthly meat draw is one of those JT's nights that does not need much explaining. Grab a seat, grab a drink, and listen for your number.",
     priceLabel: "RSVP",
     rsvpUrl: "#",
-    reservationUrl: "#booking-placeholder",
     featured: true,
     status: "published"
   },
@@ -70,7 +68,6 @@ export const events: Event[] = [
       "Karaoke at JT's is built for regulars, first-timers, and people who swear they are only doing one song.",
     priceLabel: "Free entry",
     rsvpUrl: "#",
-    reservationUrl: "#booking-placeholder",
     status: "published"
   },
   {
@@ -84,7 +81,6 @@ export const events: Event[] = [
     description:
       "A Friday night DJ set for people who came for one drink and made plans with the whole room.",
     priceLabel: "Free entry",
-    reservationUrl: "#booking-placeholder",
     status: "published"
   },
   {
@@ -98,7 +94,6 @@ export const events: Event[] = [
     description:
       "Open jam is for local players and regulars who like a room with a little noise in it.",
     priceLabel: "Free entry",
-    reservationUrl: "#booking-placeholder",
     status: "published"
   }
 ];

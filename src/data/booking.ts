@@ -6,8 +6,10 @@ const cleanUrl = (value: string | undefined, fallback: string) => {
 const emailSubject = (subject: string) =>
   `mailto:jtsbargrill@yahoo.ca?subject=${encodeURIComponent(subject)}`;
 
+const defaultRegularTableUrl = "https://cal.com/bar-jts-obymqd/regular-table";
+
 export const bookingLinks = {
-  regularTable: cleanUrl(import.meta.env.PUBLIC_REGULAR_TABLE_URL, emailSubject("Table booking at JT's")),
+  regularTable: cleanUrl(import.meta.env.PUBLIC_REGULAR_TABLE_URL, defaultRegularTableUrl),
   eventNight: cleanUrl(import.meta.env.PUBLIC_EVENT_TABLE_URL, emailSubject("Event night table at JT's")),
   birthday: cleanUrl(import.meta.env.PUBLIC_BIRTHDAY_BOOKING_URL, emailSubject("Birthday booking at JT's")),
   privateParty: cleanUrl(import.meta.env.PUBLIC_PRIVATE_PARTY_URL, emailSubject("Private party at JT's")),

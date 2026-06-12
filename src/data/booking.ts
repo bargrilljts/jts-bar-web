@@ -7,12 +7,15 @@ const emailSubject = (subject: string) =>
   `mailto:jtsbargrill@yahoo.ca?subject=${encodeURIComponent(subject)}`;
 
 const defaultRegularTableUrl = "https://cal.com/bar-jts-obymqd/regular-table";
+const defaultEventTableUrl = "https://cal.com/bar-jts-obymqd/event-night-table";
+const defaultBirthdayBookingUrl = "https://cal.com/bar-jts-obymqd/birthday-booking";
+const defaultPrivatePartyUrl = "https://cal.com/bar-jts-obymqd/private-party-booking";
 
 export const bookingLinks = {
   regularTable: cleanUrl(import.meta.env.PUBLIC_REGULAR_TABLE_URL, defaultRegularTableUrl),
-  eventNight: cleanUrl(import.meta.env.PUBLIC_EVENT_TABLE_URL, emailSubject("Event night table at JT's")),
-  birthday: cleanUrl(import.meta.env.PUBLIC_BIRTHDAY_BOOKING_URL, emailSubject("Birthday booking at JT's")),
-  privateParty: cleanUrl(import.meta.env.PUBLIC_PRIVATE_PARTY_URL, emailSubject("Private party at JT's")),
+  eventNight: cleanUrl(import.meta.env.PUBLIC_EVENT_TABLE_URL, defaultEventTableUrl),
+  birthday: cleanUrl(import.meta.env.PUBLIC_BIRTHDAY_BOOKING_URL, defaultBirthdayBookingUrl),
+  privateParty: cleanUrl(import.meta.env.PUBLIC_PRIVATE_PARTY_URL, defaultPrivatePartyUrl),
   partyInquiry: cleanUrl(import.meta.env.PUBLIC_PARTY_INQUIRY_URL, emailSubject("Party inquiry at JT's")),
   artistApplication: cleanUrl(import.meta.env.PUBLIC_ARTIST_APPLICATION_URL, emailSubject("Play at JT's application"))
 };
